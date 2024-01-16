@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 exports.updateUserInfo = async (req, res) => {
   try {
     const { name, email } = req.body;
-    const userId = req.params.userId; // Assuming the user ID is passed as a parameter
+    const userId = req.params.userId; 
 
     // Find the user by ID
     const user = await User.findByPk(userId);
