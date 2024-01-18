@@ -65,7 +65,6 @@ exports.getUserInfo = async (req, res) => {
         id: user.id,
         name: user.name,
         email: user.email,
-        // Add any other properties you want to include in the response
       };
   
       res.json(userInfoResponse);
