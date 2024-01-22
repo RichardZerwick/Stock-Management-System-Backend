@@ -10,6 +10,6 @@ const router = express.Router();
 router.use('/auth', authRoutes);
 //router.use('/admin', adminRoutes);
 router.use('/user', userRoutes);
-//router.use('/product', productsRoutes);
+router.use('/product', productsRoutes);
 
 module.exports = router;
