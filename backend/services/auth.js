@@ -69,6 +69,8 @@ class AuthService {
         message: 'Authentication successful',
         id: user.id,
         token: user.token,
+        role: user.role,
+        tokenExpiry: user.tokenExpiry,
       };
     } catch (error) {
       console.error(error);

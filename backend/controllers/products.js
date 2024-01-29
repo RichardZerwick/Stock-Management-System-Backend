@@ -15,3 +15,14 @@ exports.getAllProducts = async (req, res) => {
   const result = await productService.getAllProducts();
   return res.status(result.success ? 200 : 500).json(result);
 };
+
+exports.deleteProduct = async (req, res) => {
+  const productId = req.params.id;
+
+  if (!productId) {
+    return res.status(400).json({ success: false, message: 'Product ID is required' });
+  }
+
+  const result = await productService.deleteProduct(productId);
+  return res.status(result.success ? 200 : 500).json(result);
+};

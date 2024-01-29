@@ -51,6 +51,23 @@ class ProductService {
       return { success: false, message: 'Server error' };
     }
   }
+
+  async deleteProduct(productId) {
+    try {
+      const product = await Product.findByPk(productId);
+
+      if (!product) {
+        return { success: false, message: 'Product not found' };
+      }
+
+      await product.destroy();
+
+      return { success: true, message: 'Product deleted successfully' };
+    } catch (error) {
+      console.error(error);
+      return { success: false, message: 'Server error' };
+    }
+  }
 }
 
 module.exports = new ProductService();
