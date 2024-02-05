@@ -14,7 +14,7 @@ class AuthService {
       const hashedPassword = await bcrypt.hash(password, 10);
 
       const secretKey = process.env.SECRET_KEY;
-      const token = jwt.sign({ email, role }, secretKey, { expiresIn: '1h' });
+      const token = jwt.sign({ email, role }, secretKey, { expiresIn: '24h' });
 
       const newUser = await User.create({
         name,
@@ -22,7 +22,7 @@ class AuthService {
         password: hashedPassword,
         role,
         token: token,
-        tokenExpiry: Date.now() + 3600000,
+        tokenExpiry: Date.now() + 86400000,
       });
 
       return {
@@ -53,12 +53,12 @@ class AuthService {
       }
 
       const secretKey = process.env.SECRET_KEY;
-      const token = jwt.sign({ userId: user.id, email: user.email, role: user.role }, secretKey, { expiresIn: '1h' });
+      const token = jwt.sign({ userId: user.id, email: user.email, role: user.role }, secretKey, { expiresIn: '24h' });
 
       await User.update(
         {
           token: token,
-          tokenExpiry: Date.now() + 3600000,
+          tokenExpiry: Date.now() + 86400000,
           lastLogin: new Date(),
         },
         { where: { id: user.id } }
